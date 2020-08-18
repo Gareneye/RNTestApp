@@ -1,13 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
+import { IBaseScreenProps } from 'modules/shared/screens/BaseScreen';
 import React from 'react';
 import {
   SafeAreaView,
@@ -15,27 +6,32 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Navigator, RouteName } from 'utilities/Navigator';
 
-declare const global: { HermesInternal: null | {} };
+interface IProps extends IBaseScreenProps {}
 
-const App = () => {
+export const HomeScreen = (_props: IProps) => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+      <SafeAreaView style={styles.wrapper}>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Hey guys!</Text>
-              <Text style={styles.sectionDescription}>
-                Welcome in
-                <Text style={styles.highlight}> Pannoire Starter</Text>
-              </Text>
+              <TouchableOpacity
+                onPress={() => Navigator.navigate(RouteName.DetailsScreen)}>
+                <Text style={styles.sectionDescription}>
+                  Welcome in
+                  <Text style={styles.highlight}> Pannoire Starter</Text>
+                </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>My contact:</Text>
@@ -50,6 +46,9 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+  },
   scrollView: {
     backgroundColor: Colors.lighter,
   },
@@ -87,5 +86,3 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
-export default App;
