@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Navigator, RouteName } from 'utilities/Navigator';
+import { Fonts } from 'resources/Fonts';
 
 interface IProps extends IBaseScreenProps {}
 
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   sectionTitle: {
+    ...Fonts.body15,
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,

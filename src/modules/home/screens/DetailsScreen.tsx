@@ -1,6 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { Image, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
+import { Images } from 'resources';
 
 export const DetailsScreen = () => {
   return (
@@ -9,7 +9,7 @@ export const DetailsScreen = () => {
       <SafeAreaView style={styles.wrapper}>
         <View style={styles.body}>
           <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Details</Text>
+            <Image style={styles.image} source={Images.zen} />
           </View>
         </View>
       </SafeAreaView>
@@ -21,16 +21,17 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  image: {
+    width: 300,
+    height: 300,
+    borderRadius: 300,
   },
+  scrollView: {},
   engine: {
     position: 'absolute',
     right: 0,
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
+  body: {},
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -38,19 +39,16 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: Colors.black,
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
-    color: Colors.dark,
   },
   highlight: {
     fontWeight: '700',
   },
   footer: {
-    color: Colors.dark,
     fontSize: 12,
     fontWeight: '600',
     padding: 4,
