@@ -12,6 +12,7 @@ import {
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Navigator, RouteName } from 'utilities/Navigator';
 import { Fonts } from 'resources/Fonts';
+import { L10n } from 'resources';
 
 interface IProps extends IBaseScreenProps {}
 
@@ -31,6 +32,7 @@ export const HomeScreen = (_props: IProps) => {
                 <Text style={styles.sectionDescription}>
                   Welcome in
                   <Text style={styles.highlight}> Pannoire Starter</Text>
+                  { L10n.testKey({ value: "Binded!"}) }
                 </Text>
               </TouchableOpacity>
             </View>

@@ -1,0 +1,6 @@
+{
+  "common": {
+    "testKey": "Value of test key with value: {value}",
+    "otherKey": "Value of test key with value: {value}"
+  }
+}
