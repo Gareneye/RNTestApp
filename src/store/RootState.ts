@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import { testReducer } from './reducers/TestReducer';
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   testBranch: testReducer,
 });
 
+export default rootReducer;
 export type RootState = ReturnType<typeof rootReducer>;
