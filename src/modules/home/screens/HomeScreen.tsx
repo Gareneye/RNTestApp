@@ -16,6 +16,7 @@ import { Fonts } from 'resources/Fonts';
 import { testAction } from 'store/Actions';
 import { RootState } from 'store/RootState';
 import { Navigator, RouteName } from 'utilities/Navigator';
+import { useApi } from 'utilities/UseAPI';
 
 const connector = connect(
   ({ testBranch }: RootState) => ({
@@ -30,6 +31,8 @@ type Props = {};
 
 export const HomeScreen = connector(
   (props: Props & BaseScreenProps<typeof connector>) => {
+    const { data } = useApi<{success: boolean}>({ method: 'getTestData' });
+
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -47,6 +50,7 @@ export const HomeScreen = connector(
                     <Text style={styles.highlight}> Pannoire Starter</Text>
                     {L10n.testKey({ value: 'Binded!' })}
                     Text from store {props.testValue}
+                    Text from useAPI {JSON.stringify(data)}
                   </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
