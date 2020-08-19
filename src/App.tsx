@@ -5,12 +5,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackNavigator } from 'navigators/RootStackNavigator';
 import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from 'store/Store';
 import { navigationRef } from 'utilities/Navigator';
 
 export default function App() {
   return (
-    <NavigationContainer ref={navigationRef}>
-      <RootStackNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer ref={navigationRef}>
+        <RootStackNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }

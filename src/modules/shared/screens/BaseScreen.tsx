@@ -1,4 +1,6 @@
 import { NavigationProp } from '@react-navigation/core';
-export interface IBaseScreenProps {
+import { ConnectedProps } from 'react-redux';
+
+export type BaseScreenProps<T> = ConnectedProps<T> & {
   navigation: NavigationProp<{}>;
-}
+};

@@ -12,7 +12,9 @@ module.exports = {
         experimentalImportSupport: false,
         inlineRequires: false,
       },
-      babelTransformerPath: require.resolve('react-native-typescript-transformer')
+      babelTransformerPath: require.resolve(
+        'react-native-typescript-transformer',
+      ),
     }),
   },
 };
