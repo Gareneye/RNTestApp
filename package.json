@@ -6,15 +6,17 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest && yarn run lint",
+    "test": "jest --detectOpenHandles && yarn run lint",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.8.0",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "@types/react-redux": "^7.1.9",
+    "@types/redux-persist": "^4.3.1",
     "@types/webpack-env": "^1.15.2",
     "class-transformer": "^0.3.1",
     "react": "16.13.1",
@@ -25,6 +27,7 @@
     "react-native-screens": "^2.10.1",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",
     "reflect-metadata": "^0.1.13",
     "typesafe-actions": "^5.1.0"
@@ -33,7 +36,7 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
-    "@types/jest": "^25.2.3",
+    "@types/jest": "^26.0.10",
     "@types/react-native": "^0.63.2",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
@@ -60,6 +63,7 @@
       "node"
     ],
     "setupFiles": [
+      "./jestSetup.js",
       "./node_modules/react-native-gesture-handler/jestSetup.js"
     ],
     "transformIgnorePatterns": [

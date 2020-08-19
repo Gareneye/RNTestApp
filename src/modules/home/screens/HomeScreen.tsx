@@ -18,8 +18,8 @@ import { RootState } from 'store/RootState';
 import { Navigator, RouteName } from 'utilities/Navigator';
 
 const connector = connect(
-  (state: RootState) => ({
-    testValue: state.testBranch.title,
+  ({ testBranch }: RootState) => ({
+    testValue: testBranch.title,
   }),
   {
     testTrigger: (value: string) => testAction(value),
