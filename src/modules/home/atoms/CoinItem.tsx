@@ -9,6 +9,7 @@ interface Props {
   item: Ticker;
 }
 
+export const MAX_TITLE_LENGTH = 12;
 export const COIN_ITEM_MIN_HEIGHT = 45;
 
 export const CoinItem = (props: Props) => {
@@ -29,7 +30,10 @@ export const CoinItem = (props: Props) => {
         </View>
         <View style={[styles.headerRow, styles.paddedRow]}>
           <Text style={styles.rank}>{ticker.rank}</Text>
-          <Text style={styles.desc}>{ticker.name}</Text>
+          <Text style={styles.desc}>
+            {ticker.name.slice(0, MAX_TITLE_LENGTH)}
+            {ticker.name.length > MAX_TITLE_LENGTH ? '...' : null}
+          </Text>
         </View>
       </View>
 
@@ -81,11 +85,11 @@ const styles = StyleSheet.create({
     marginTop: Dimens.space.s,
   },
   pricesWrapper: {
-    minWidth: 80
+    minWidth: 80,
   },
   chartWrapper: {
     justifyContent: 'flex-end',
-    marginRight: Dimens.space.xl
+    marginRight: Dimens.space.xl,
   },
   icon: {
     width: 20,
@@ -112,14 +116,14 @@ const styles = StyleSheet.create({
   },
   changeLabel: {
     minWidth: 20,
-    height: 20,
+    height: 24,
     alignItems: 'flex-end',
     paddingHorizontal: Dimens.space.s,
     borderRadius: 5,
   },
   changeLabelText: {
     ...Fonts.label15,
-    lineHeight: 20,
+    lineHeight: 24,
     color: 'white',
   },
   changeLabelUp: {
