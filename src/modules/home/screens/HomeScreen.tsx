@@ -8,15 +8,18 @@ import {
   Text,
   TouchableOpacity,
   View,
+  FlatList,
+  Dimensions,
+  Alert,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { connect } from 'react-redux';
-import { L10n } from 'resources';
 import { Fonts } from 'resources/Fonts';
 import { testAction } from 'store/Actions';
 import { RootState } from 'store/RootState';
-import { Navigator, RouteName } from 'utilities/Navigator';
 import { useApi } from 'utilities/UseAPI';
+import { Ticker } from 'models/Ticker';
+import { CoinItem, COIN_ITEM_MIN_HEIGHT } from '../atoms/CoinItem';
+import { Colors, Dimens } from 'resources';
 
 const connector = connect(
   ({ testBranch }: RootState) => ({
@@ -29,42 +32,31 @@ const connector = connect(
 
 type Props = {};
 
+// Flat List Settings
+const SEPARATOR_HEIGHT = Dimens.space.m;
+const ROWS_ON_SCREEN = Dimensions.get("screen").height / (COIN_ITEM_MIN_HEIGHT + 2*SEPARATOR_HEIGHT); // Naive approach
+
+const ItemSeparator = () => <View style={styles.separator} />;
+
+
 export const HomeScreen = connector(
   (props: Props & BaseScreenProps<typeof connector>) => {
-    const { data } = useApi<{success: boolean}>({ method: 'getTestData' });
+    const { data } = useApi<Ticker[]>({ method: 'getTickersForAllCoins' });
+
+    const renderItem = ({ item }: { item: Ticker }) => <CoinItem item={item} />;
+    const keyExtractor = (item: Ticker) => item.id;
+    
 
     return (
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.wrapper}>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            <View style={styles.body}>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Hey guys!</Text>
-                <TouchableOpacity
-                  onPress={() => Navigator.navigate(RouteName.DetailsScreen)}>
-                  <Text style={styles.sectionDescription}>
-                    Welcome in
-                    <Text style={styles.highlight}> Pannoire Starter</Text>
-                    {L10n.testKey({ value: 'Binded!' })}
-                    Text from store {props.testValue}
-                    Text from useAPI {JSON.stringify(data)}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => props.testTrigger(`Test date: ${new Date()}`)}>
-                  <Text style={styles.sectionDescription}>Change Value</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>My contact:</Text>
-                <Text style={styles.sectionDescription}>blogokodzie.pl</Text>
-                <Text style={styles.sectionDescription}>blogokodzie.pl</Text>
-              </View>
-            </View>
-          </ScrollView>
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            ItemSeparatorComponent={ItemSeparator}
+          />
         </SafeAreaView>
       </>
     );
@@ -74,42 +66,12 @@ export const HomeScreen = connector(
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: 'white',
   },
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    ...Fonts.body15,
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  separator: {
+    flex: 1,
+    height: 1,
+    backgroundColor: Colors.separator,
+    marginVertical: SEPARATOR_HEIGHT
   },
 });
