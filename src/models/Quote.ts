@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import 'class-transformer';
 
 export class Quote {
     public readonly price!: number;
