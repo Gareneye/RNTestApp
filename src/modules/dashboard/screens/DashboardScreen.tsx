@@ -4,6 +4,7 @@ import { SafeAreaView, StatusBar, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 import { RootState } from 'store/RootState';
+import { Fonts } from 'resources';
 
 const connector = connect(({}: RootState) => ({}), {});
 
@@ -15,7 +16,8 @@ export const DashboardScreen = connector(
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
-          <Text>{'Dashboard screen'}</Text>
+          <Text style={{ ...Fonts.heading3, margin: 20}}>{'Dashboard screen'}</Text>
+          <Text style={{ ...Fonts.label15, margin: 20}}>{'Move to Coins tab ->'}</Text>
         </SafeAreaView>
       </>
     );

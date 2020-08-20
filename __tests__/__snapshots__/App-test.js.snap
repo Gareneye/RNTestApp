@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CoinItem renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "minHeight": 45,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://static2.coinpaprika.com/coin/42-42-coin/logo-thumb.png",
+          }
+        }
+        style={
+          Object {
+            "height": 20,
+            "marginRight": 8,
+            "width": 20,
+          }
+        }
+      />
+      <Text
+        style={
+          Object {
+            "fontFamily": "Lato-Semibold",
+            "fontSize": 15,
+            "lineHeight": 20,
+          }
+        }
+      >
+        42
+      </Text>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "flexDirection": "row",
+          },
+          Object {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "backgroundColor": "#D5DAD5",
+            "color": "grey",
+            "fontFamily": "Lato-Semibold",
+            "fontSize": 13,
+            "height": 20,
+            "lineHeight": 20,
+            "marginRight": 8,
+            "minWidth": 20,
+            "paddingHorizontal": 4,
+            "textAlign": "center",
+          }
+        }
+      >
+        1152
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "grey",
+            "fontFamily": "Lato-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+          }
+        }
+      >
+        42-coin
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "minHeight": 45,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+            },
+            Object {
+              "justifyContent": "flex-end",
+              "marginRight": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+            },
+            Object {
+              "alignItems": "flex-end",
+            },
+            Object {
+              "minWidth": 80,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Lato-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            }
+          }
+        >
+          $ 36650.73
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              Object {
+                "marginTop": 8,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignItems": "flex-end",
+                  "borderRadius": 5,
+                  "height": 24,
+                  "minWidth": 20,
+                  "paddingHorizontal": 8,
+                },
+                Object {
+                  "backgroundColor": "green",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontFamily": "Lato-Semibold",
+                  "fontSize": 15,
+                  "lineHeight": 24,
+                }
+              }
+            >
+              2.31%
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

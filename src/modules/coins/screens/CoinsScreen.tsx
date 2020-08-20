@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { RootState } from 'store/RootState';
 import { Ticker } from 'models/Ticker';
 import { CoinItem, COIN_ITEM_MIN_HEIGHT } from '../atoms/CoinItem';
-import { Colors, Dimens } from 'resources';
+import { Colors, Dimens, Fonts } from 'resources';
 import {
   listAppearedFirstTimeAction,
   sortTickersStartAction,
@@ -26,6 +26,7 @@ const connector = connect(
   ({ tickersBranch }: RootState) => ({
     sorted: tickersBranch.sorted,
     isLoading: tickersBranch.isLoading,
+    sortBy: tickersBranch.sortBy
   }),
   {
     initAction: () => listAppearedFirstTimeAction(),
@@ -45,7 +46,7 @@ const ROWS_ON_SCREEN = Math.ceil(
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const HomeScreen = connector(
+export const CoinsScreen = connector(
   (props: Props & BaseScreenProps<typeof connector>) => {
     const renderItem = ({ item }: { item: Ticker }) => <CoinItem item={item} />;
     const keyExtractor = (item: Ticker) => item.id;
@@ -60,27 +61,31 @@ export const HomeScreen = connector(
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.wrapper}>
-          <TouchableOpacity
-            onPress={() => {
-              props.filterTickers(TickerListSorting.LOWER_PRICE);
-            }}>
-            <Text style={{ width: 100, height: 100, backgroundColor: 'red' }}>
-              {'Sort'}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              props.filterTickers(TickerListSorting.HIGHER_PRICE);
-            }}>
-            <Text style={{ width: 100, height: 100, backgroundColor: 'green' }}>
-              {'Sort'}
-            </Text>
-          </TouchableOpacity>
+          {/* Todo: Refactor this */}
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              onPress={() => {
+                props.filterTickers(TickerListSorting.LOWER_PRICE);
+              }}>
+              <Text style={{ ...Fonts.caption13, height: 30, lineHeight: 30, paddingHorizontal: 15, borderWidth: 1, margin: 20, backgroundColor: props.sortBy === TickerListSorting.LOWER_PRICE ? 'grey' : 'white'  }}>
+                {'Sort by lower price'}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                props.filterTickers(TickerListSorting.HIGHER_PRICE);
+              }}>
+              <Text style={{ ...Fonts.caption13, height: 30, lineHeight: 30, paddingHorizontal: 15, borderWidth: 1, margin: 20,backgroundColor: props.sortBy === TickerListSorting.HIGHER_PRICE ? 'grey' : 'white' }}>
+                {'Sort by higher price'}
+              </Text>
+            </TouchableOpacity>
+          </View>
 
           {props.isLoading ? (
-            <Text>{'Loading...'}</Text>
+            <Text style={{ paddingHorizontal: 20 }}>{'Loading...'}</Text>
           ) : (
             <FlatList
+              contentContainerStyle={{ marginHorizontal: 20 }}
               data={props.sorted}
               renderItem={renderItem}
               keyExtractor={keyExtractor}

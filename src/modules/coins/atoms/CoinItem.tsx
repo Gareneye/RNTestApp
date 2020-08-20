@@ -9,7 +9,7 @@ interface Props {
   item: Ticker;
 }
 
-export const MAX_TITLE_LENGTH = 12;
+export const MAX_TITLE_LENGTH = 8;
 export const COIN_ITEM_MIN_HEIGHT = 45;
 
 export const CoinItem = (props: Props) => {
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   chartWrapper: {
     justifyContent: 'flex-end',
-    marginRight: Dimens.space.xl,
+    marginRight: Dimens.space.m,
   },
   icon: {
     width: 20,
