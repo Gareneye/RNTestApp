@@ -8,6 +8,7 @@ import {
   FlatList,
   Text,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -16,16 +17,20 @@ import { Ticker } from 'models/Ticker';
 import { CoinItem, COIN_ITEM_MIN_HEIGHT } from '../atoms/CoinItem';
 import { Colors, Dimens } from 'resources';
 import {
-  fetchTickerStartAction,
   listAppearedFirstTimeAction,
+  sortTickersStartAction,
 } from 'store/Actions';
+import { TickerListSorting } from 'helpers/TickersSortingStrategies';
+
 
 const connector = connect(
   ({ tickersBranch }: RootState) => ({
-    ...tickersBranch,
+    sorted: tickersBranch.sorted,
+    isLoading: tickersBranch.isLoading
   }),
   {
     initAction: () => listAppearedFirstTimeAction(),
+    filterTickers: (sortBy: TickerListSorting) => sortTickersStartAction(sortBy),
   },
 );
 
@@ -54,11 +59,18 @@ export const HomeScreen = connector(
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.wrapper}>
+          <TouchableOpacity onPress={() => { props.filterTickers(TickerListSorting.LOWER_PRICE); }}>
+            <Text style={{ width: 100, height: 100, backgroundColor: 'red'}}>{'Sort'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => { props.filterTickers(TickerListSorting.HIGHER_PRICE); }}>
+            <Text style={{ width: 100, height: 100, backgroundColor: 'green'}}>{'Sort'}</Text>
+          </TouchableOpacity>
+
           {props.isLoading ? (
             <Text>{'Loading...'}</Text>
           ) : (
             <FlatList
-              data={props.tickers}
+              data={props.sorted}
               renderItem={renderItem}
               keyExtractor={keyExtractor}
               ItemSeparatorComponent={ItemSeparator}
