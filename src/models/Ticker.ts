@@ -1,5 +1,7 @@
+import 'reflect-metadata';
+import {Type} from 'class-transformer';
+
 import { Quote } from './Quote';
-import { Type } from 'class-transformer';
 
 export class Ticker {
   public readonly id!: string;
