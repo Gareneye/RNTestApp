@@ -10,7 +10,10 @@ export const RootStackNavigator = () => {
     <Stack.Navigator
       initialRouteName={RouteName.AppTabNavigator}
       headerMode={'none'}>
-      <Stack.Screen name={RouteName.AppTabNavigator} component={AppTabNavigator} />
+      <Stack.Screen
+        name={RouteName.AppTabNavigator}
+        component={AppTabNavigator}
+      />
     </Stack.Navigator>
   );
 };

@@ -6,6 +6,7 @@ import { plainToClass } from 'class-transformer';
 
 export default {
   getTickersForAllCoins: () =>
-    axios.get(Urls.getTickersForAllCoins())
-      .then(response => plainToClass(Ticker, response.data))
+    axios
+      .get(Urls.getTickersForAllCoins())
+      .then(response => plainToClass(Ticker, response.data)),
 };

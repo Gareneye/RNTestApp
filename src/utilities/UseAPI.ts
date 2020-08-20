@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import ApiService from './ApiService';
 
+// eslint-disable react-hooks/rules-of-hooks
+
 interface IArgs<DataType, ErrorType> {
   method: keyof typeof ApiService;
   params?: any[];
@@ -64,7 +66,7 @@ export const useApi = <DataType, ErrorType = any>(
 
   useEffect(() => {
     execute();
-  }, []);
+  }, [execute]);
 
   return { ...rest };
 };

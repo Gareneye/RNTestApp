@@ -1,7 +1,10 @@
 import { AppAction } from 'store/Store';
 import { ActionId } from 'store/ActionId';
 import { Ticker } from 'models/Ticker';
-import { TickerListSorting, sortTickers } from 'helpers/TickersSortingStrategies';
+import {
+  TickerListSorting,
+  sortTickers,
+} from 'helpers/TickersSortingStrategies';
 
 const initialState: {
   isLoading: boolean;
@@ -24,7 +27,7 @@ export const tickerReducer = (
       return {
         ...state,
         isLoading: true,
-        sortBy: action.payload.sortBy
+        sortBy: action.payload.sortBy,
       };
     }
     case ActionId.SORT_TICKERS_DONE: {

@@ -9,7 +9,7 @@ interface Props {
   item: Ticker;
 }
 
-export const MAX_TITLE_LENGTH = 12;
+export const MAX_TITLE_LENGTH = 8;
 export const COIN_ITEM_MIN_HEIGHT = 45;
 
 export const CoinItem = (props: Props) => {
@@ -17,7 +17,7 @@ export const CoinItem = (props: Props) => {
   const imageUrl = `https://static2.coinpaprika.com/coin/${ticker.id}/logo-thumb.png`;
   const chartUrl = `https://graphs2.coinpaprika.com/currency/chart/${ticker.id}/7d/chart.svg`;
 
-  const tempQuote: Quote | undefined = ticker.quotes['USD'];
+  const tempQuote: Quote | undefined = ticker.quotes.USD;
   const value = tempQuote.price.toFixed(2);
   const percentChange = tempQuote.percent_change_7d;
 
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   chartWrapper: {
     justifyContent: 'flex-end',
-    marginRight: Dimens.space.xl,
+    marginRight: Dimens.space.m,
   },
   icon: {
     width: 20,

@@ -3,7 +3,6 @@
  */
 export enum RouteName {
   AppTabNavigator = 'AppTabNavigator',
-  HomeScreen = 'HomeScreen',
+  CoinsScreen = 'CoinsScreen',
   DashboardScreen = 'DashboardScreen',
-  DetailsScreen = 'DetailsScreen',
 }
