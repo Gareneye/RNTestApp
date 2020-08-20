@@ -45,7 +45,7 @@ const ticker = {
   last_updated: '2020-08-20T14:43:35Z'
 }
 
-// Render tests
+// 1. Render tests
 it('app works', async () => {
   await act(async () => {
     renderer.create(<App />);
@@ -57,11 +57,11 @@ it('CoinItem renders correctly',  () => {
   expect(tree).toMatchSnapshot();
 });
 
-// Saga tests
+// 2. Saga tests
 it('sortingSaga', assert => {
   const gen = cloneableGenerator(watchTickersSortingSaga)();
   // gen.next(); 
 });
 
 
-// Sorting strategy test
+// 3. Sorting strategy test
