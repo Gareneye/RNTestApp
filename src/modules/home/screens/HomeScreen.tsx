@@ -13,7 +13,7 @@ import {
   Alert,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Fonts } from 'resources/Fonts';
+
 import { testAction } from 'store/Actions';
 import { RootState } from 'store/RootState';
 import { useApi } from 'utilities/UseAPI';
@@ -34,7 +34,7 @@ type Props = {};
 
 // Flat List Settings
 const SEPARATOR_HEIGHT = Dimens.space.m;
-const ROWS_ON_SCREEN = Dimensions.get("screen").height / (COIN_ITEM_MIN_HEIGHT + 2*SEPARATOR_HEIGHT); // Naive approach
+const ROWS_ON_SCREEN = Math.ceil(Dimensions.get("screen").height / (COIN_ITEM_MIN_HEIGHT + 2*SEPARATOR_HEIGHT)); // Naive approach
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -45,7 +45,7 @@ export const HomeScreen = connector(
 
     const renderItem = ({ item }: { item: Ticker }) => <CoinItem item={item} />;
     const keyExtractor = (item: Ticker) => item.id;
-    
+    const renderedScreensAmount = 17; // Default is 21
 
     return (
       <>
@@ -56,6 +56,11 @@ export const HomeScreen = connector(
             renderItem={renderItem}
             keyExtractor={keyExtractor}
             ItemSeparatorComponent={ItemSeparator}
+            windowSize={renderedScreensAmount}
+            removeClippedSubviews={true}
+            initialNumToRender={ROWS_ON_SCREEN}
+            maxToRenderPerBatch={Math.min(10, ROWS_ON_SCREEN)}
+            updateCellsBatchingPeriod={25}
           />
         </SafeAreaView>
       </>
