@@ -15,8 +15,8 @@ import { L10n } from 'resources';
 import { Fonts } from 'resources/Fonts';
 import { testAction } from 'store/Actions';
 import { RootState } from 'store/RootState';
-import { Navigator, RouteName } from 'utilities/Navigator';
 import { useApi } from 'utilities/UseAPI';
+import { Ticker } from 'models/Ticker';
 
 const connector = connect(
   ({ testBranch }: RootState) => ({
@@ -31,41 +31,14 @@ type Props = {};
 
 export const HomeScreen = connector(
   (props: Props & BaseScreenProps<typeof connector>) => {
-    const { data } = useApi<{success: boolean}>({ method: 'getTestData' });
+    const { data } = useApi<Ticker[]>({ method: 'getTickersForAllCoins' });
 
     return (
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.wrapper}>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            <View style={styles.body}>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>Hey guys!</Text>
-                <TouchableOpacity
-                  onPress={() => Navigator.navigate(RouteName.DetailsScreen)}>
-                  <Text style={styles.sectionDescription}>
-                    Welcome in
-                    <Text style={styles.highlight}> Pannoire Starter</Text>
-                    {L10n.testKey({ value: 'Binded!' })}
-                    Text from store {props.testValue}
-                    Text from useAPI {JSON.stringify(data)}
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => props.testTrigger(`Test date: ${new Date()}`)}>
-                  <Text style={styles.sectionDescription}>Change Value</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={styles.sectionContainer}>
-                <Text style={styles.sectionTitle}>My contact:</Text>
-                <Text style={styles.sectionDescription}>blogokodzie.pl</Text>
-                <Text style={styles.sectionDescription}>blogokodzie.pl</Text>
-              </View>
-            </View>
-          </ScrollView>
-        </SafeAreaView>
+          <Text>Tyle: {JSON.stringify(data)}</Text>
+        </SafeAreaView> 
       </>
     );
   },
