@@ -6,8 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest --detectOpenHandles && yarn run lint",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test": "jest --detectOpenHandles",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",

@@ -17,7 +17,7 @@ export const CoinItem = (props: Props) => {
   const imageUrl = `https://static2.coinpaprika.com/coin/${ticker.id}/logo-thumb.png`;
   const chartUrl = `https://graphs2.coinpaprika.com/currency/chart/${ticker.id}/7d/chart.svg`;
 
-  const tempQuote: Quote | undefined = ticker.quotes['USD'];
+  const tempQuote: Quote | undefined = ticker.quotes.USD;
   const value = tempQuote.price.toFixed(2);
   const percentChange = tempQuote.percent_change_7d;
 

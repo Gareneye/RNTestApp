@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import {Type} from 'class-transformer';
+import { Type } from 'class-transformer';
 
 import { Quote } from './Quote';
 
@@ -15,5 +15,5 @@ export class Ticker {
   public readonly last_updated!: string;
 
   @Type(() => Quote)
-  public readonly quotes!: {[index: string]: Quote}; // Info: Map<string, Quote> doesn't work
+  public readonly quotes!: { [index: string]: Quote }; // Info: Map<string, Quote> doesn't work
 }

@@ -16,7 +16,11 @@ export const AppTabNavigator = () => {
         options={{
           tabBarLabel: 'Today',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="newspaper-variant-outline" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="newspaper-variant-outline"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />

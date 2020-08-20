@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { RootState } from 'store/RootState';
 
-const connector = connect(({ }: RootState) => ({}), {});
+const connector = connect(({}: RootState) => ({}), {});
 
 type Props = {};
 

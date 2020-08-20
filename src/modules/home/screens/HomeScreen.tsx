@@ -22,15 +22,15 @@ import {
 } from 'store/Actions';
 import { TickerListSorting } from 'helpers/TickersSortingStrategies';
 
-
 const connector = connect(
   ({ tickersBranch }: RootState) => ({
     sorted: tickersBranch.sorted,
-    isLoading: tickersBranch.isLoading
+    isLoading: tickersBranch.isLoading,
   }),
   {
     initAction: () => listAppearedFirstTimeAction(),
-    filterTickers: (sortBy: TickerListSorting) => sortTickersStartAction(sortBy),
+    filterTickers: (sortBy: TickerListSorting) =>
+      sortTickersStartAction(sortBy),
   },
 );
 
@@ -53,17 +53,28 @@ export const HomeScreen = connector(
 
     useEffect(() => {
       props.initAction();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
       <>
         <StatusBar barStyle="dark-content" />
         <SafeAreaView style={styles.wrapper}>
-          <TouchableOpacity onPress={() => { props.filterTickers(TickerListSorting.LOWER_PRICE); }}>
-            <Text style={{ width: 100, height: 100, backgroundColor: 'red'}}>{'Sort'}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.filterTickers(TickerListSorting.LOWER_PRICE);
+            }}>
+            <Text style={{ width: 100, height: 100, backgroundColor: 'red' }}>
+              {'Sort'}
+            </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => { props.filterTickers(TickerListSorting.HIGHER_PRICE); }}>
-            <Text style={{ width: 100, height: 100, backgroundColor: 'green'}}>{'Sort'}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.filterTickers(TickerListSorting.HIGHER_PRICE);
+            }}>
+            <Text style={{ width: 100, height: 100, backgroundColor: 'green' }}>
+              {'Sort'}
+            </Text>
           </TouchableOpacity>
 
           {props.isLoading ? (
