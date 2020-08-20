@@ -32,15 +32,28 @@ export const CoinItem = (props: Props) => {
           <Text style={styles.desc}>{ticker.name}</Text>
         </View>
       </View>
- 
-      <View style={styles.col}>
-        <SvgUri width={100} height={'100%'} uri={chartUrl} />
-      </View>
 
-      <View style={[styles.col, styles.lastCol]}>
-        <Text style={styles.title}>{value}</Text>
-        <View style={[styles.changeLabel, percentChange > 0 ? styles.changeLabelUp : styles.changeLabelDown]}>
-          <Text style={styles.changeLabelText}>{`${percentChange}%`}</Text>
+      <View style={styles.col}>
+        <View style={styles.row}>
+          <View style={[styles.col, styles.chartWrapper]}>
+            <SvgUri width={100} height={30} uri={chartUrl} />
+          </View>
+
+          <View style={[styles.col, styles.lastCol, styles.pricesWrapper]}>
+            <Text style={styles.price}>{`$ ${value}`}</Text>
+            <View style={[styles.headerRow, styles.paddedRow]}>
+              <View
+                style={[
+                  styles.changeLabel,
+                  percentChange > 0
+                    ? styles.changeLabelUp
+                    : styles.changeLabelDown,
+                ]}>
+                <Text
+                  style={styles.changeLabelText}>{`${percentChange}%`}</Text>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -56,15 +69,23 @@ const styles = StyleSheet.create({
   },
   col: {
     flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   lastCol: {
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   headerRow: {
     flexDirection: 'row',
   },
   paddedRow: {
     marginTop: Dimens.space.s,
+  },
+  pricesWrapper: {
+    minWidth: 80
+  },
+  chartWrapper: {
+    justifyContent: 'flex-end',
+    marginRight: Dimens.space.xl
   },
   icon: {
     width: 20,
@@ -91,14 +112,14 @@ const styles = StyleSheet.create({
   },
   changeLabel: {
     minWidth: 20,
-    height: 28,
+    height: 20,
     alignItems: 'flex-end',
     paddingHorizontal: Dimens.space.s,
-    borderRadius: 5
+    borderRadius: 5,
   },
   changeLabelText: {
     ...Fonts.label15,
-    lineHeight: 28,
+    lineHeight: 20,
     color: 'white',
   },
   changeLabelUp: {
@@ -106,5 +127,8 @@ const styles = StyleSheet.create({
   },
   changeLabelDown: {
     backgroundColor: 'red',
-  }
+  },
+  price: {
+    ...Fonts.body15,
+  },
 });

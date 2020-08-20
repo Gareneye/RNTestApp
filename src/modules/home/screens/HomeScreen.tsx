@@ -36,7 +36,6 @@ type Props = {};
 const SEPARATOR_HEIGHT = Dimens.space.m;
 const ROWS_ON_SCREEN = Dimensions.get("screen").height / (COIN_ITEM_MIN_HEIGHT + 2*SEPARATOR_HEIGHT); // Naive approach
 
-
 const ItemSeparator = () => <View style={styles.separator} />;
 
 
