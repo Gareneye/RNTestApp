@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
-import { testReducer } from './reducers/TestReducer';
+import { tickerReducer } from './reducers/TickerReducer';
 
 const rootReducer = combineReducers({
-  testBranch: testReducer,
+  tickersBranch: tickerReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
 type SubStates = (keyof RootState)[];
 
-export const persistedBranches: SubStates = ['testBranch'];
+export const persistedBranches: SubStates = ['tickersBranch'];
 
 export default rootReducer;

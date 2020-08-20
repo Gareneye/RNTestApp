@@ -1,16 +1,31 @@
-import { select, spawn, take } from '@redux-saga/core/effects';
+import { select, spawn, take, fork, call, put, takeLatest, takeLeading, takeEvery } from '@redux-saga/core/effects';
 import { ActionId } from 'store/ActionId';
+import ApiService from 'utilities/ApiService';
+import { fetchTickerSuccessAction, fetchTickerErrorAction, fetchTickerStartAction } from 'store/Actions';
 
 export function* rootSaga() {
-  console.log('Hello Sagas!');
-  yield spawn(watchTestSaga);
+  yield spawn(watchTickersSaga);
+  yield spawn(watchListSaga);
 }
 
-export function* watchTestSaga() {
+export function* watchListSaga() {
+  yield take(ActionId.LIST_APPEARED_FIRST_TIME);
+  yield put(fetchTickerStartAction());
+}
+
+export function* watchTickersSaga() {
   while (true) {
-    yield take(ActionId.TEST_MESSAGE);
-    const state = yield select();
-    console.log('Hello Test message!');
-    console.log(`State: ${JSON.stringify(state)}`);
+    yield take(ActionId.FETCH_TICKER_START);
+    yield call(fetchTickersSaga);
+  }
+}
+
+export function* fetchTickersSaga() {
+  try {
+    const tickers = yield call(ApiService.getTickersForAllCoins);
+    yield put(fetchTickerSuccessAction(tickers))
+    return tickers
+  } catch(_error) {
+    yield put(fetchTickerErrorAction())
   }
 }

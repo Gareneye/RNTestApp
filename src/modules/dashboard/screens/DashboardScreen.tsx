@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 
 import { RootState } from 'store/RootState';
 
-const connector = connect(({ testBranch }: RootState) => ({}), {});
+const connector = connect(({ }: RootState) => ({}), {});
 
 type Props = {};
 
 export const DashboardScreen = connector(
-  (props: Props & BaseScreenProps<typeof connector>) => {
+  (_props: Props & BaseScreenProps<typeof connector>) => {
     return (
       <>
         <StatusBar barStyle="dark-content" />
