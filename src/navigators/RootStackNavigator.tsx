@@ -1,18 +1,19 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { RouteName } from 'constants/Routes';
-import { DetailsScreen } from 'modules/home/screens/DetailsScreen';
-import { HomeScreen } from 'modules/home/screens/HomeScreen';
 import React from 'react';
+import { AppTabNavigator } from './AppTabNavigator';
 
 const Stack = createStackNavigator();
 
 export const RootStackNavigator = () => {
   return (
     <Stack.Navigator
-      initialRouteName={RouteName.HomeScreen}
+      initialRouteName={RouteName.AppTabNavigator}
       headerMode={'none'}>
-      <Stack.Screen name={RouteName.HomeScreen} component={HomeScreen} />
-      <Stack.Screen name={RouteName.DetailsScreen} component={DetailsScreen} />
+      <Stack.Screen
+        name={RouteName.AppTabNavigator}
+        component={AppTabNavigator}
+      />
     </Stack.Navigator>
   );
 };

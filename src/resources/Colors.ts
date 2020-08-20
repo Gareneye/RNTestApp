@@ -17,16 +17,18 @@ const Palette = {
   electricViolet: '#530BF4',
   wildBlueYonder: '#6F6FB7',
   paua: '#1F0063',
-  periwinkleGray: '#D5DAF0',
-  lightGrey: 'rgb(246, 247, 250)',
+  periwinkleGray: '#D5DAD5',
+  lightGrey: 'rgb(240, 240, 240)',
 };
 
 export const Colors = {
   primary: Palette.electricViolet,
   caption: Palette.black,
+  desc: Palette.grey,
   label: Palette.wildBlueYonder,
   text: Palette.paua,
   border: Palette.periwinkleGray,
+  separator: Palette.lightGrey,
   error: Palette.red,
   progress: Palette.electricViolet,
 };

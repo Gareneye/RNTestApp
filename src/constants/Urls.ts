@@ -1,5 +1,6 @@
-const BASE_URL = 'https://ennxmd7hxku7.x.pipedream.net';
+const BASE_URL = 'https://api.coinpaprika.com/v1/';
 
 export const Urls = {
-  testUrl: (value: string) => `${BASE_URL}?test=${value}`,
+  getAllCoins: () => `${BASE_URL}coins`,
+  getTickersForAllCoins: () => `${BASE_URL}tickers`,
 };
