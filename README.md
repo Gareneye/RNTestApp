@@ -15,5 +15,5 @@
 - 7h 40min working time
 - I have used Redux Saga for bussiness logic (separated "thread" helps with smooth list)
 - I have no finished Views from "clean code side", and is kinda dirty there
-- I have no use coinpaprika client, because looks poor (last commit 7 months ago)
+- I have no used coinpaprika client, because looks outdated (last commit 7 months ago)
 - I not used to do tests so often, so I gave up with TDD and stuff like that. I've put writing tests at the end (I did not make it in time)
