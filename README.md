@@ -9,7 +9,7 @@
 
 ## raport
 - Toggl summary is in /task-raport directory
-- App preview: https://drive.google.com/file/d/1Ijiws4xvnbNkmv0GJMMd5wbbkbvEXeuY/view?usp=sharing (small hint: list doesn't get stuck - it's only my finder tried to provoke a bug)
+- App preview: https://drive.google.com/file/d/1Ijiws4xvnbNkmv0GJMMd5wbbkbvEXeuY/view?usp=sharing (small hint: list doesn't get stuck - it's only my finger tried to provoke a bug)
 
 ## summary
 - 7h 40min working time
